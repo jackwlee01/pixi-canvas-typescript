@@ -29,8 +29,10 @@ export class Renderer extends React.Component<Props> {
 
 
     draw = () => {
+        var flump = this.props.flump;
         var canvas = this.canvas;
         var ctx = this.ctx;
+        var frameRate = flump.library.frameRate;
 
         if(this.canvas && this.context){
             var flump = this.props.flump;
@@ -39,7 +41,7 @@ export class Renderer extends React.Component<Props> {
 
             var now = new Date().getTime();
             var dif = now - this.time;
-            dif = dif / (1000/60);
+            dif = dif / (1000/frameRate);
             this.time = now;
             this.frame += dif;
         

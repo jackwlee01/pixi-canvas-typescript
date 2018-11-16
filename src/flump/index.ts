@@ -172,6 +172,17 @@ export class Flump {
 
     }
 
+
+    static movies(flump:Flump){
+        return Object.values(flump.symbols).filter(Flump.isMovie)
+    }
+
+
+    static sprites(flump:Flump){
+        return Object.values(flump.symbols).filter(Flump.isSprite)
+    }
+
+
     static isString(display:Display): display is "string"{
         return typeof display == "string"
     }

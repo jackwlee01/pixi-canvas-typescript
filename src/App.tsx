@@ -18,26 +18,31 @@ class App extends React.Component<Props, State> {
   constructor(props:{}){
     super(props)
     this.state = {
-      libIndex: 3,
-      symbolId: "WinEasterEgg",
-      flump: this.createNewFlump(3)
+      libIndex: 0,
+      symbolId: "",
+      flump: this.createNewFlump(0)
     }
+    this.selectLib(0);
   }
 
 
   createNewFlump = (libIndex:number) => {
     const atlas = new Image()
-    atlas.src = require(`./animation/${libIndex}/atlas0.png`)
-    const json = require(`./animation/${libIndex}/library.json`)
+    atlas.src = require(`./animation/scale_1/${libIndex}/atlas0.png`)
+    const json = require(`./animation/scale_1/${libIndex}/library.json`)
     return new Flump(json, atlas)
   }
 
 
   selectLib = (libIndex:number) => () => {
+    var flump = this.createNewFlump(libIndex);
+    var symbolId = Flump.movies(flump)[0].id;
+
     this.setState({
       ...this.state,
       libIndex,
-      flump: this.createNewFlump(libIndex)
+      flump,
+      symbolId
     })
   }
 
@@ -49,6 +54,7 @@ class App extends React.Component<Props, State> {
     })
   }
   
+
 
   libraryLink = (libId:number) => {
     var isSelected = libId === this.state.libIndex;
@@ -65,11 +71,11 @@ class App extends React.Component<Props, State> {
   render() {
     var { libIndex, symbolId, flump } = this.state;
 
-    const libraryIds = [0, 1, 2, 3]
-    const movies = Object.values(flump.symbols).filter(Flump.isMovie)
+    const libraryIds = [0, 1]
+    const movies = Flump.movies(flump)
     const movieIds = movies.map( movie => movie.id )
 
-    const sprites = Object.values(flump.symbols).filter(Flump.isSprite)
+    const sprites = Flump.sprites(flump)
     const spriteIds = sprites.map( sprite => sprite.symbol )
     
     return (
