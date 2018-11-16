@@ -89,8 +89,10 @@ class App extends React.Component<Props, State> {
         <div className="btn-container"><h2>Library</h2>{ libraryIds.map( this.libraryLink ) }</div>
         <div className="btn-container"><h2>Movies</h2>{ movieIds.map( this.symbolLink ) }</div>
         <div className="btn-container"><h2>Sprites</h2>{ spriteIds.map( this.symbolLink ) }</div>
-        <h2>Texture Atlas</h2>
-        <img src={require(`./animation/scale_1/${libIndex}/atlas0.png`)} />
+        <div>
+          <h2>Texture Atlas</h2>
+          <img src={require(`./animation/scale_1/${libIndex}/atlas0.png`)} />
+        </div>
       </div>
     );
   }
