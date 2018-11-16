@@ -37,6 +37,11 @@ body {
   float: left;
 }
 
+.atlas-container{
+  display:block;
+  clear:both;
+}
+
 img{
   border: 1px solid #bbbbbb;
 }

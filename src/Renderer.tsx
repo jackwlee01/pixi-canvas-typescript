@@ -49,7 +49,7 @@ export class Renderer extends React.Component<Props> {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
             ctx.save()
-            ctx.translate(1024/2, 768/2)
+            ctx.translate(750/2, 500/2)
             Flump.draw(flump, ctx, textures, symbolId, this.frame);
             ctx.restore()
 
@@ -59,7 +59,7 @@ export class Renderer extends React.Component<Props> {
 
 
     render(){
-        return <canvas ref={ this.setCanvas } width="1024" height="768" background-color="009900"/>
+        return <canvas ref={ this.setCanvas } width="750" height="500" background-color="009900"/>
     }
 
 
