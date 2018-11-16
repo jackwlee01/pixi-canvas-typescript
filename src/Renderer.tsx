@@ -21,10 +21,11 @@ export class Renderer extends React.Component<Props> {
         this.ctx = canvas.getContext("2d")!;
         this.draw();
     }
+    
 
-    componentWillUpdate(){
-        this.frame = 0;
-        this.time = 0;
+    componentDidUpdate(){
+        if(this.frame != 0) this.frame = 0;
+        if(this.time != 0) this.time = 0;
     }
 
 

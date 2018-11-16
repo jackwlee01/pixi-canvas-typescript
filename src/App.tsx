@@ -22,7 +22,10 @@ class App extends React.Component<Props, State> {
       symbolId: "",
       flump: this.createNewFlump(0)
     }
-    this.selectLib(0);
+  }
+
+  componentWillMount(){
+    this.selectLib(0)();
   }
 
 
@@ -37,6 +40,7 @@ class App extends React.Component<Props, State> {
   selectLib = (libIndex:number) => () => {
     var flump = this.createNewFlump(libIndex);
     var symbolId = Flump.movies(flump)[0].id;
+    console.log("New lib :" + symbolId)
 
     this.setState({
       ...this.state,
